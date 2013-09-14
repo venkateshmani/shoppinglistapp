@@ -8,7 +8,9 @@ namespace Webservice
     public interface IShoppingListService
     {
         [OperationContract]
-        bool CreateUser(UserProfile userDetails);        
+        RequestResult CreateUser(UserProfile userDetails);
+        [OperationContract]
+        UserVerification IsUserExists(string userPhoneNumber);
     }
     
     [DataContract]
@@ -52,5 +54,59 @@ namespace Webservice
         }
     }
 
+    [DataContract]
+    public class UserVerification
+    {
+        [DataMember]
+        public bool AlreadyExists
+        {
+            get;
+            set;
+        }        
+        [DataMember]
+        public string SecurityQuestion
+        {
+            get;
+            set;        
+        }
+        [DataMember]
+        public string PhoneNumber
+        {
+            get;
+            set;
+        }
+        [DataMember]
+        public RequestResult RequestResult
+        {
+            get;
+            set;
+        }
+    }    
 
+    [DataContract]
+    public class RequestResult
+    {
+        [DataMember]
+        public string Message
+        { get;  set; }
+        [DataMember]
+        public Result Result
+        { get; set; }
+    }
+    [DataContract]
+    public enum Result
+    {
+        [EnumMember]
+        Success,
+        [EnumMember]
+        Failed,
+        [EnumMember]
+        UserAlreadyExists,
+        [EnumMember]
+        AuthenticationFailed,
+        [EnumMember]
+        NotProUser,
+        [EnumMember]
+        DataNotFound
+    }
 }
