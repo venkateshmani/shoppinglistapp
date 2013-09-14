@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
 
 namespace Webservice
 {
@@ -12,36 +7,50 @@ namespace Webservice
     [ServiceContract]
     public interface IShoppingListService
     {
-
         [OperationContract]
-        string GetData(int value);
-
-        [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
-
-        // TODO: Add your service operations here
+        bool CreateUser(UserProfile userDetails);        
     }
-
-
-    // Use a data contract as illustrated in the sample below to add composite types to service operations.
+    
     [DataContract]
-    public class CompositeType
-    {
-        bool boolValue = true;
-        string stringValue = "Hello ";
-
+    public class UserProfile
+    {  
         [DataMember]
-        public bool BoolValue
+        public string PhoneNumber
         {
-            get { return boolValue; }
-            set { boolValue = value; }
+            get;
+            set;
+        } 
+        [DataMember]
+        public string Name
+        {
+            get; 
+            set;
+        }               
+        [DataMember]
+        public short SecurityQuestionID
+        {
+            get;
+            set;
         }
-
         [DataMember]
-        public string StringValue
+        public string SecurityAnswer
         {
-            get { return stringValue; }
-            set { stringValue = value; }
+            get;
+            set;
+        }
+        [DataMember]
+        public bool IsPro
+        {
+            get;
+            set;
+        }
+        [DataMember]
+        public short CountryCode
+        {
+            get;
+            set;
         }
     }
+
+
 }
