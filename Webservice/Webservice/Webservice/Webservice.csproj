@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="DataModel\Country.cs" />
     <Compile Include="DataModel\PendingNotification.cs" />
+    <Compile Include="DataModel\RequestRespone.cs" />
     <Compile Include="DataModel\SecurityQuestion.cs" />
     <Compile Include="DataModel\SharedList.cs" />
     <Compile Include="DataModel\ShoppingList.cs" />

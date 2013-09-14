@@ -27,4 +27,33 @@ namespace Webservice.DataModel
         [DataMember]
         public string SecurityQuestionAnswer { get; set; }
     }
+
+    [DataContract]
+    public class UserVerification
+    {
+        [DataMember]
+        public bool AlreadyExists
+        {
+            get;
+            set;
+        }
+        [DataMember]
+        public string SecurityQuestion
+        {
+            get;
+            set;
+        }
+        [DataMember]
+        public string PhoneNumber
+        {
+            get;
+            set;
+        }
+        [DataMember]
+        public RequestResult RequestResult
+        {
+            get;
+            set;
+        }
+    }    
 }
